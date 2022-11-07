@@ -6,6 +6,8 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/golang/protobuf/jsonpb"
+	"github.com/golang/protobuf/ptypes/timestamp"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/types/known/durationpb"
 	"google.golang.org/protobuf/types/known/timestamppb"
@@ -206,10 +208,8 @@ func BytesSlice(val, sep string) ([][]byte, error) {
 
 // Timestamp converts the given RFC3339 formatted string into a timestamp.Timestamp.
 func Timestamp(val string) (*timestamppb.Timestamp, error) {
-	var r timestamppb.Timestamp
-	val = strconv.Quote(strings.Trim(val, `"`))
-	unmarshaler := &protojson.UnmarshalOptions{}
-	err := unmarshaler.Unmarshal([]byte(val), &r)
+	var r timestamp.Timestamp
+	err := jsonpb.UnmarshalString(val, &r)
 	if err != nil {
 		return nil, err
 	}

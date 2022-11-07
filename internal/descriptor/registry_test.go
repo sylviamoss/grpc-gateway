@@ -3,7 +3,7 @@ package descriptor
 import (
 	"testing"
 
-	"github.com/grpc-ecosystem/grpc-gateway/v2/internal/descriptor/openapiconfig"
+	"github.com/sylviamoss/grpc-gateway/v2/internal/descriptor/openapiconfig"
 	"google.golang.org/protobuf/compiler/protogen"
 	"google.golang.org/protobuf/encoding/prototext"
 	"google.golang.org/protobuf/proto"
@@ -64,7 +64,7 @@ func TestLoadFile(t *testing.T) {
 		t.Errorf("reg.files[%q] = nil; want non-nil", "example.proto")
 		return
 	}
-	wantPkg := GoPackage{Path: "github.com/grpc-ecosystem/grpc-gateway/runtime/internal/example", Name: "example"}
+	wantPkg := GoPackage{Path: "github.com/sylviamoss/grpc-gateway/runtime/internal/example", Name: "example"}
 	if got, want := file.GoPkg, wantPkg; got != want {
 		t.Errorf("file.GoPkg = %#v; want %#v", got, want)
 	}
@@ -112,7 +112,7 @@ func TestLoadFileNestedPackage(t *testing.T) {
 		t.Errorf("reg.files[%q] = nil; want non-nil", "example.proto")
 		return
 	}
-	wantPkg := GoPackage{Path: "github.com/grpc-ecosystem/grpc-gateway/runtime/internal/example.nested.nested2", Name: "example_nested_nested2"}
+	wantPkg := GoPackage{Path: "github.com/sylviamoss/grpc-gateway/runtime/internal/example.nested.nested2", Name: "example_nested_nested2"}
 	if got, want := file.GoPkg, wantPkg; got != want {
 		t.Errorf("file.GoPkg = %#v; want %#v", got, want)
 	}
@@ -131,7 +131,7 @@ func TestLoadFileWithDir(t *testing.T) {
 		t.Errorf("reg.files[%q] = nil; want non-nil", "example.proto")
 		return
 	}
-	wantPkg := GoPackage{Path: "github.com/grpc-ecosystem/grpc-gateway/runtime/internal/example", Name: "example"}
+	wantPkg := GoPackage{Path: "github.com/sylviamoss/grpc-gateway/runtime/internal/example", Name: "example"}
 	if got, want := file.GoPkg, wantPkg; got != want {
 		t.Errorf("file.GoPkg = %#v; want %#v", got, want)
 	}
@@ -149,7 +149,7 @@ func TestLoadFileWithoutPackage(t *testing.T) {
 		t.Errorf("reg.files[%q] = nil; want non-nil", "example.proto")
 		return
 	}
-	wantPkg := GoPackage{Path: "github.com/grpc-ecosystem/grpc-gateway/runtime/internal/example_file", Name: "example_file"}
+	wantPkg := GoPackage{Path: "github.com/sylviamoss/grpc-gateway/runtime/internal/example_file", Name: "example_file"}
 	if got, want := file.GoPkg, wantPkg; got != want {
 		t.Errorf("file.GoPkg = %#v; want %#v", got, want)
 	}
@@ -202,7 +202,7 @@ func TestLoadFileWithPackageNameCollision(t *testing.T) {
 		t.Errorf("reg.files[%q] = nil; want non-nil", "path/to/another.proto")
 		return
 	}
-	wantPkg := GoPackage{Path: "github.com/grpc-ecosystem/grpc-gateway/runtime/internal/example", Name: "example"}
+	wantPkg := GoPackage{Path: "github.com/sylviamoss/grpc-gateway/runtime/internal/example", Name: "example"}
 	if got, want := file.GoPkg, wantPkg; got != want {
 		t.Errorf("file.GoPkg = %#v; want %#v", got, want)
 	}
@@ -212,7 +212,7 @@ func TestLoadFileWithPackageNameCollision(t *testing.T) {
 		t.Errorf("reg.files[%q] = nil; want non-nil", "path/to/example.proto")
 		return
 	}
-	wantPkg = GoPackage{Path: "github.com/grpc-ecosystem/grpc-gateway/runtime/internal/example", Name: "example", Alias: ""}
+	wantPkg = GoPackage{Path: "github.com/sylviamoss/grpc-gateway/runtime/internal/example", Name: "example", Alias: ""}
 	if got, want := file.GoPkg, wantPkg; got != want {
 		t.Errorf("file.GoPkg = %#v; want %#v", got, want)
 	}
@@ -222,7 +222,7 @@ func TestLoadFileWithPackageNameCollision(t *testing.T) {
 		t.Errorf("reg.files[%q] = nil; want non-nil", "path/to/ioutil.proto")
 		return
 	}
-	wantPkg = GoPackage{Path: "github.com/grpc-ecosystem/grpc-gateway/runtime/internal/ioutil", Name: "ioutil", Alias: "ioutil_0"}
+	wantPkg = GoPackage{Path: "github.com/sylviamoss/grpc-gateway/runtime/internal/ioutil", Name: "ioutil", Alias: "ioutil_0"}
 	if got, want := file.GoPkg, wantPkg; got != want {
 		t.Errorf("file.GoPkg = %#v; want %#v", got, want)
 	}
